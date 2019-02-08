@@ -1,0 +1,14 @@
+{
+  "env": {
+    "browser": true,
+    "jquery": true
+  },
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "comma-dangle": [2, "always-multiline"],
+    "func-names": ["error", "as-needed"],
+    "quotes": ["error", "backtick"]
+  }
+}
