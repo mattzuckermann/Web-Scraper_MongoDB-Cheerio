@@ -2,6 +2,8 @@
 const express = require(`express`);
 const exphbs = require(`express-handlebars`);
 const handlebars = require(`handlebars`);
+const axios = require(`axios`);
+const cheerio = require(`cheerio`);
 
 // Setting Up Server
 const app = express();
@@ -22,7 +24,7 @@ app.engine(
 app.set(`view engine`, `handlebars`);
 
 // // Setting Up Routes
-// require(`./routes/apiRoutes`)(app);
+require(`./routes/apiRoutes`)(app, axios, cheerio);
 require(`./routes/htmlRoutes`)(app);
 
 // Listening to Server
