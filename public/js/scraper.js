@@ -3,20 +3,19 @@ $(`#scrapeButton`).on(`click`, function getData() {
     method: `GET`,
     url: `/scrape`,
   }).then(function returnResponse(response) {
+    const bodyDiv = $(`#bodyDiv`);
     response.forEach(function loopResponse(dataEntry) {
-      //   let result = $(`<div>`);
-      console.log(dataEntry.Headline);
-      //   $(`<p>`).text(dataEntry.Headline);
-      console.log(dataEntry.URL);
-      //   $(`<p>`).attr(`href`, dataEntry.URL);
-      console.log(dataEntry.Summary);
-      //   $(`<p>`).text(dataEntry.Summary);
-      console.log(dataEntry.Image);
-      //   $(`<img>`).attr(`href`, dataEntry.Image);
-      console.log(dataEntry.Author);
-      //   $(`<p>`).text(dataEntry.Author);
-      console.log(dataEntry.Date);
-      //   $(`<p>`).text(dataEntry.Date);
+      const result = $(`<div class="dataEntry">`);
+      result.append($(`<p>`).text(dataEntry.Headline));
+      result.append(
+        $(`<a>`)
+          .attr(`href`, dataEntry.URL)
+          .text(dataEntry.URL)
+      );
+      result.append($(`<p>`).text(`Summary: ${dataEntry.Summary}`));
+      result.append($(`<img>`).attr(`src`, dataEntry.Image));
+      result.append($(`<p>`).text(`By: ${dataEntry.Author}`));
+      $(`#bodyDiv`).append(result);
     });
   });
 });
