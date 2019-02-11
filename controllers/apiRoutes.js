@@ -20,22 +20,31 @@ module.exports = function(app, axios, cheerio, db) {
           .find(`span.css-1n7hynb`)
           .text();
 
-        // Create a new Scrape using the `result` object built from scraping
-        db.Scrape.create(result)
-          .then(function(dbScrape) {
-            // If saved successfully, send the the new User document to the client
-            console.log(dbScrape);
-          })
-          .catch(function(err) {
-            // If an error occurred, log it
-            console.log(err);
-          });
+        db.Scrape.find({}).then(function(allResults) {
+          if (
+            allResults.every(function(dataEntry) {
+              return dataEntry.Headline !== result.Headline;
+            })
+          ) {
+            // If new scraped data is not a duplicate
+            // Create a new Scrape using the `result` object built from scraping
+            db.Scrape.create(result)
+              .then(function(dbScrape) {
+                console.log(dbScrape);
+              })
+              .catch(function(err) {
+                // If an error occurred, log it
+                console.log(err);
+              });
+          } else {
+            console.log(`This entry is a duplicate and will not be written into the database.`);
+          }
+        });
       });
-      // Send a message to the client
-      res.send(
-        `New Articles Have Been Scraped!\n\n<a href="/articles"><button>See All Articles</button></a>`
-      );
     });
+    // Send a message to the client
+    res.send(`Scraping Completed!
+<a href="/articles"><button>See All Articles</button></a>`);
   });
 
   app.post(`/saveComment`, function(req, res) {
