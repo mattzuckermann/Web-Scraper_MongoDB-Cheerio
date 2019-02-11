@@ -1,10 +1,7 @@
-/* eslint-disable func-names */
-
 module.exports = function(app, axios, cheerio, db) {
   app.get(`/scrape`, function(req, res) {
     axios.get(`https://www.nytimes.com/section/technology`).then(function(response) {
       const $ = cheerio.load(response.data);
-      const results = [];
       $(`div.css-4jyr1y`).each(function(i, element) {
         const result = {};
         result.Headline = $(this)
@@ -33,13 +30,23 @@ module.exports = function(app, axios, cheerio, db) {
             // If an error occurred, log it
             console.log(err);
           });
-
-        // Push result object to results array in order to send res.json(results) below
-        results.push(result);
       });
       // Send a message to the client
-      console.log(`Scrape Complete`);
-      res.json(results);
+      res.send(
+        `New Articles Have Been Scraped!\n\n<a href="/articles"><button>See All Articles</button></a>`
+      );
     });
+  });
+
+  app.post(`/saveComment`, function(req, res) {
+    db.Note.create(result)
+      .then(function(dbScrape) {
+        // If saved successfully, send the the new User document to the client
+        console.log(dbScrape);
+      })
+      .catch(function(err) {
+        // If an error occurred, log it
+        console.log(err);
+      });
   });
 };
