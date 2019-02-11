@@ -13,28 +13,25 @@
 </head>
 
 <body>
-    <div class="container-full">
-        <div class="row">
+    <div class="container-full border primary">
+        <div class="row" style="display:block text-align:center">
             <div class="col-12">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Active</a>
+                        <h2><a class="nav-link" href="/scrape">Scrape Articles</a></h2>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <h2><a class="nav-link active" href="/articles">See All Articles</a></h2>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-
-    {{{body}}}
+    <div class="container jumbotron border primary">
+        <div class="row">
+            {{{body}}}
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

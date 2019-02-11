@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div id="bodyDiv" class="col-12">
+            {{#each scrapedArticles}}
+            <a href={{URL}}>Link: {{Headline}}</a>
+            <div>Summary: {{Summary}}</div>
+            <img src={{Image}}>
+            <div>By: {{Author}}</div>
+            <a href="/articles/{{_id}}">Go To Article</a>
+            <br>
+            <br>
+            <h2>Comment Section</h2>
+            <input placeholder="Write A Comment!">
+            <br>
+            <div><a href="/saveComment"><button>Save</button></a></div>
+            <br>
+            <div>=============</div>
+            <div>COMMENT AREA</div>
+            <div>=============</div>
+            {{/each}}
+        </div>
+    </div>
+</div>
