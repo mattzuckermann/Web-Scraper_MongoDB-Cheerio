@@ -8,7 +8,7 @@
   "rules": {
     "prettier/prettier": ["error"],
     "comma-dangle": [2, "always-multiline"],
-    "func-names": ["error", "as-needed"],
+    "func-names": 0,
     "quotes": ["error", "backtick"]
   }
 }
