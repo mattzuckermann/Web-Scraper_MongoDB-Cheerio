@@ -32,7 +32,7 @@ app.set(`view engine`, `handlebars`);
 
 // Setting Up Controller Routes
 require(`./controllers/apiRoutes`)(app, axios, cheerio, db);
-require(`./controllers/htmlRoutes`)(app);
+require(`./controllers/htmlRoutes`)(app, db);
 
 // Listening to Server
 app.listen(
