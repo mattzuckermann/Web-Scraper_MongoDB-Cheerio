@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div id="bodyDiv" class="col-12">
+            {{#each scrapedArticles}}
+            <h2><a target="_blank" href={{URL}}>{{Headline}}</a></h2>
+            <h3> By: {{Author}}</h3>
+            <br>
+            <h4>Summary:</h4>
+            <div>{{Summary}}</div>
+            <div>
+                {{#if Image}}
+                <img src={{Image}}>
+                {{else}} <img src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"
+                    style="width: 200px">
+                {{/if}}
+            </div>
+            <h5><a href="/articles/{{_id}}">Back To Article!</a></h5>
+            <br>
+            <h2>Comment Section</h2>
+            <input type="text" style="width:300px; height:160px" placeholder="Write A Comment!">
+            <br>
+            <div><a href="/saveComment"><button>Save</button></a></div>
+            <br>
+            <div>==================</div>
+            <div>COMMENTS VIEW AREA</div>
+            <div>==================</div>
+            {{/each}}
+        </div>
+    </div>
+</div>
