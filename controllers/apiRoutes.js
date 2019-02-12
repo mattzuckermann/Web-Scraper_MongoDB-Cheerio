@@ -48,7 +48,6 @@ module.exports = function(app, axios, cheerio, db) {
   });
 
   app.post(`/saveComment/:id`, function(req, res) {
-    console.log(req.body);
     db.Note.create(req.body)
       .then(function(dbNote) {
         // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
