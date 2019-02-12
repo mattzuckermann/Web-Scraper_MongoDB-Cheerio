@@ -5,7 +5,7 @@ module.exports = function(app, db) {
 
   app.get(`/articles`, function(req, res) {
     db.Scrape.find({})
-      .sort({ ObjectId: -1 })
+      .sort({ _id: -1 })
       .then(function(dbScrape) {
         res.render(`allArticles`, {
           scrapedArticles: dbScrape,
@@ -22,11 +22,13 @@ module.exports = function(app, db) {
   });
 
   app.get(`/articles/:id/comment`, function(req, res) {
-    db.Scrape.find({ _id: req.params.id }).then(function(dbScrape) {
-      res.render(`singleArticleComment`, {
-        scrapedArticles: dbScrape,
+    db.Scrape.find({ _id: req.params.id })
+      .populate(`note`)
+      .then(function(dbScrape) {
+        res.render(`singleArticleComment`, {
+          scrapedArticles: dbScrape,
+        });
       });
-    });
   });
 
   app.get(`*`, function(req, res) {
