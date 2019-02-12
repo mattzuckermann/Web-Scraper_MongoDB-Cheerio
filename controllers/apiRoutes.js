@@ -4,19 +4,19 @@ module.exports = function(app, axios, cheerio, db) {
       const $ = cheerio.load(response.data);
       $(`div.css-4jyr1y`).each(function(i, element) {
         const result = {};
-        result.Headline = $(this)
+        result.headline = $(this)
           .find(`h2`)
           .text();
-        result.URL = `https://www.nytimes.com${$(this)
+        result.url = `https://www.nytimes.com${$(this)
           .children(`a`)
           .attr(`href`)}`;
-        result.Summary = $(this)
+        result.summary = $(this)
           .find(`p.css-1echdzn`)
           .text();
-        result.Image = $(this)
+        result.image = $(this)
           .find(`figure`)
           .attr(`itemid`);
-        result.Author = $(this)
+        result.author = $(this)
           .find(`span.css-1n7hynb`)
           .text();
 
@@ -47,11 +47,22 @@ module.exports = function(app, axios, cheerio, db) {
 <a href="/articles"><button>See All Articles</button></a>`);
   });
 
-  app.post(`/saveComment`, function(req, res) {
-    db.Note.create(result)
+  app.post(`/saveComment/:id`, function(req, res) {
+    console.log(req.body);
+    db.Note.create(req.body)
+      .then(function(dbNote) {
+        // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
+        // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
+        // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
+        return db.Scrape.findOneAndUpdate(
+          { _id: req.params.id },
+          // eslint-disable-next-line no-underscore-dangle
+          { note: dbNote._id },
+          { new: true }
+        );
+      })
       .then(function(dbScrape) {
-        // If saved successfully, send the the new User document to the client
-        console.log(dbScrape);
+        res.json(dbScrape);
       })
       .catch(function(err) {
         // If an error occurred, log it

@@ -7,20 +7,20 @@ const Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
 const NoteSchema = new Schema({
-  // `Subject` is required and of type String
-  Subject: {
+  // `subject` is required and of type String
+  subject: {
     type: String,
     required: true,
   },
 
-  // `Author` is required and of type String
-  Author: {
+  // `author` is required and of type String
+  author: {
     type: String,
     required: true,
   },
 
-  // `Body` is required and of type String
-  Body: {
+  // `body` is required and of type String
+  body: {
     type: String,
     required: true,
   },
