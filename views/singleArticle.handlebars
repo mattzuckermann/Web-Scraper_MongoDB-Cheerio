@@ -15,6 +15,23 @@
                 {{/if}}
             </div>
             <h5><a href="/articles/{{_id}}/comment">Add A Note!</a></h5>
+            <br>
+            <div id="noteDiv">
+                {{#if note}}
+                <h3>Notes:</h3>
+                {{else}}
+                {{/if}}
+                {{#each note}}
+                <div id={{_id}}>
+                    <p>Subject: {{subject}}</p>
+                    <p>Author: {{author}}</p>
+                    <p>Body: {{body}}</p>
+                </div>
+                <br>
+                <hr>
+                <br>
+                {{/each}}
+            </div>
             {{/each}}
         </div>
     </div>

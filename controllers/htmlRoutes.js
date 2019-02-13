@@ -14,21 +14,21 @@ module.exports = function(app, db) {
   });
 
   app.get(`/articles/:id`, function(req, res) {
-    db.Scrape.find({ _id: req.params.id }).then(function(dbScrape) {
-      res.render(`singleArticle`, {
-        scrapedArticles: dbScrape,
-      });
-    });
-  });
-
-  app.get(`/articles/:id/comment`, function(req, res) {
     db.Scrape.find({ _id: req.params.id })
       .populate(`note`)
       .then(function(dbScrape) {
-        res.render(`singleArticleComment`, {
+        res.render(`singleArticle`, {
           scrapedArticles: dbScrape,
         });
       });
+  });
+
+  app.get(`/articles/:id/comment`, function(req, res) {
+    db.Scrape.find({ _id: req.params.id }).then(function(dbScrape) {
+      res.render(`singleArticleComment`, {
+        scrapedArticles: dbScrape,
+      });
+    });
   });
 
   app.get(`*`, function(req, res) {
