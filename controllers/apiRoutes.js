@@ -35,30 +35,30 @@ module.exports = function(app, axios, cheerio, db) {
               .catch(function(err) {
                 // If an error occurred, log it
                 console.log(err);
+              })
+              .then(function() {
+                // Send a message to the client
+                res.send(`New articles have been scraped!
+<a href="/articles"><button>See All Articles</button></a>`);
               });
           } else {
-            console.log(`This entry is a duplicate and will not be written into the database.`);
+            // Send a message to the client
+            res.send(`There were no new articles to scrape!
+<a href="/articles"><button>See All Articles</button></a>`);
           }
         });
       });
     });
-    // Send a message to the client
-    res.send(`Scraping Completed!
-<a href="/articles"><button>See All Articles</button></a>`);
   });
 
   app.post(`/saveComment/:id`, function(req, res) {
     db.Note.create(req.body)
       .then(function(dbNote) {
+        console.log(dbNote);
         // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
         // { new: true } tells the query that we want it to return the updated User -- it returns the original by default
         // Since our mongoose query returns a promise, we can chain another `.then` which receives the result of the query
-        return db.Scrape.findOneAndUpdate(
-          { _id: req.params.id },
-          // eslint-disable-next-line no-underscore-dangle
-          { note: dbNote._id },
-          { new: true }
-        );
+        return db.Scrape.update({ _id: req.params.id }, { $push: { note: dbNote } }, { new: true });
       })
       .then(function(dbScrape) {
         res.json(dbScrape);
