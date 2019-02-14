@@ -2,30 +2,31 @@
     <div class="row">
         <div id="bodyDiv" class="col-12">
             {{#each scrapedArticles}}
-            <h2><a target="_blank" href={{url}}>{{headline}}</a></h2>
+            <h2><a class="articleLinks" target="_blank" href={{url}}>{{headline}}</a></h2>
             <h3> By: {{author}}</h3>
             <br>
             <h4>Summary:</h4>
             <div>{{summary}}</div>
             <div>
                 {{#if image}}
-                <img src={{image}}>
-                {{else}} <img src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"
+                <img class="articleImage" src={{image}}>
+                {{else}} <img class="articleImage"
+                    src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"
                     style="width: 200px">
                 {{/if}}
             </div>
-            <h5><a href="/articles/{{_id}}/comment">Add A Note!</a></h5>
+            <h5><a class="articleLinks routeLinks rounded" href="/articles/{{_id}}/comment">Add A Note!</a></h5>
             <br>
             <div id="noteDiv">
                 {{#if note}}
-                <h3>Notes:</h3>
+                <h2 style="text-decoration:underline; margin-bottom:30px">Notes:</h2>
                 {{else}}
                 {{/if}}
                 {{#each note}}
-                <div id={{_id}}>
-                    <p>Subject: {{subject}}</p>
-                    <p>Author: {{author}}</p>
-                    <p>Body: {{body}}</p>
+                <div id={{_id}} class="noteDiv rounded">
+                    <p><strong>Subject:</strong> {{subject}}</p>
+                    <p><strong>Author:</strong> {{author}}</p>
+                    <p><strong>Body:</strong> {{body}}</p>
                 </div>
                 <br>
                 <hr>

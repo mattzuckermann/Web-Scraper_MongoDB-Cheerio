@@ -1,0 +1,69 @@
+* {
+  box-sizing: border-box;
+}
+
+#body {
+  background-image: url("https://www.wallpaperboulevard.com/Images/product/0020837_oak-light-grey-texture-m.jpeg");
+}
+
+.nav {
+  background-color: #001f3f;
+  padding: 25px 0;
+}
+
+.nav-link {
+  color: lightblue;
+  font-family: "Merriweather", serif;
+  font-size: 45px;
+  transition: all 1s ease;
+  margin-right: 40px;
+  background-color: grey;
+}
+
+.nav-link-divider {
+  color: lightblue;
+  font-family: "Merriweather", serif;
+  font-size: 45px;
+  margin-right: 40px;
+  color: white;
+}
+
+.nav-link:hover {
+  color: lightyellow;
+  background-color: #7fdbff;
+  -webkit-text-stroke: 2px black;
+  transition: all 1s ease;
+}
+
+.articleLinks {
+  color: teal;
+  background-color: white;
+  line-height: 1.5;
+  transition: all 0.5s ease;
+}
+
+.articleLinks:hover {
+  text-decoration: none;
+  color: darkblue;
+  transition: all 0.5s ease;
+}
+
+.routeLinks {
+  background-color: rgba(16, 139, 201, 0.514);
+  padding: 5px;
+}
+
+.articleImage {
+  width: 50%;
+  margin: 20px 0;
+}
+
+#mainBody {
+  background-color: white;
+}
+
+.noteDiv {
+  background-color: lightblue;
+  padding: 8px;
+  margin-bottom: 10px;
+}

@@ -2,27 +2,28 @@
     <div class="row">
         <div id="bodyDiv" class="col-12">
             {{#each scrapedArticles}}
-            <h2><a target="_blank" href={{url}}>{{headline}}</a></h2>
+            <h2><a class="articleLinks" target="_blank" href={{url}}>{{headline}}</a></h2>
             <h3> By: {{author}}</h3>
             <br>
             <h4>Summary:</h4>
             <div>{{summary}}</div>
             <div>
                 {{#if image}}
-                <img src={{image}}>
-                {{else}} <img src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"
+                <img class="articleImage" src={{image}}>
+                {{else}} <img class="articleImage"
+                    src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"
                     style="width: 200px">
                 {{/if}}
             </div>
-            <h5><a href="/articles/{{_id}}">Back To Article!</a></h5>
+            <h5><a class="articleLinks routeLinks rounded" href="/articles/{{_id}}">Back To Article!</a></h5>
             <br>
             <h2>Comment Section</h2>
             <label class="labelTitle">Subject:</label>
-            <div><input id="subjectForm" type="text" style="width:300px" placeholder="Type in subject!"></div>
+            <div><input id="subjectForm" type="text" style="width:400px" placeholder="Type in subject!"></div>
             <label class="labelTitle">Author:</label>
-            <div><input id="authorForm" type="text" style="width:300px" placeholder="Type in author!"></div>
+            <div><input id="authorForm" type="text" style="width:400px" placeholder="Type in author!"></div>
             <label class="labelTitle">Body:</label>
-            <div><input id="bodyForm" type="text" style="width:300px" placeholder="Type in body!"></div>
+            <div><input id="bodyForm" type="text" style="width:400px; height:100px" placeholder="Type in body!"></div>
             <br>
             <br>
             <div><a><button id="saveNote" data-id={{_id}}>Save</button></a></div>

@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Web Scraper | Zuckermann</title>
     <link rel="shortcut icon" type="image/png" href="imgs/web-scraper-favicon.png" />
-    <link rel="stylesheet" type="text/css" media="screen" href="styles/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/styles.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 
-<body>
-    <div class="container-full border primary">
-        <div class="row" style="display:block text-align:center">
+<body id="body">
+    <div id="navBar" class="container-full border primary">
+        <div class="row nav">
             <div class="col-12">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <h2><a class="nav-link" href="/scrape">Scrape Articles</a></h2>
-                    </li>
-                    <li class="nav-item">
-                        <h2><a class="nav-link active" href="/articles">See All Articles</a></h2>
-                    </li>
-                </ul>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav">
+                                <li class="nav-item">
+                                    <h2><a class="nav-link rounded" href="/scrape">Scrape Articles</a></h2>
+                                </li>
+                                <li class="nav-link-divider">
+                                    |
+                                </li>
+                                <li class="nav-item">
+                                    <h2><a class="nav-link rounded" href="/articles">See All Articles</a></h2>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container jumbotron border primary">
+    <br>
+    <br>
+    <div id="mainBody" class="container jumbotron rounded border border-info">
         <div class="row">
             {{{body}}}
         </div>

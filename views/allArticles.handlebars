@@ -1,25 +1,25 @@
 <div class="container">
     <div class="row">
-        <div id="bodyDiv" class="col-12">
-            {{#each scrapedArticles}}
-            <h2><a target="_blank" href={{url}}>{{headline}}</a></h2>
+        {{#each scrapedArticles}}
+        <div class="col-6 articleDiv">
+            <h2><a class="articleLinks" target="_blank" href={{url}}>{{headline}}</a></h2>
             <h3> By: {{author}}</h3>
             <br>
             <h4>Summary:</h4>
             <div>{{summary}}</div>
             <div>
                 {{#if image}}
-                <img src={{image}}>
-                {{else}} <img src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"
+                <img class="articleImage" src={{image}}>
+                {{else}} <img class="articleImage"
+                    src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"
                     style="width: 200px">
                 {{/if}}
             </div>
-            <h5><a href="/articles/{{_id}}">Go To Article!</a></h5>
-            <h5><a href="/articles/{{_id}}/comment">Add A Note!</a></h5>
+            <h5><a class="articleLinks routeLinks rounded" href="/articles/{{_id}}">Go To Article!</a></h5>
+            <h5><a class="articleLinks routeLinks rounded" href="/articles/{{_id}}/comment">Add A Note!</a></h5>
             <br>
-            <hr>
             <br>
-            {{/each}}
         </div>
+        {{/each}}
     </div>
 </div>
